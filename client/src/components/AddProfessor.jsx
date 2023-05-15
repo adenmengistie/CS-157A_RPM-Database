@@ -1,22 +1,23 @@
 import { useContext, useState } from "react";
 import SchoolsList from "../apis/SchoolsList";
-import { SchoolsContext } from "../context/SchoolsContext";
+import { ProfessorsContext } from "../context/ProfessorsContext";
 import { useParams } from "react-router-dom";
 
-const AddSchools = () => {
-    const{id} = useParams();
-    const {addSchools} = useContext(SchoolsContext);
+const AddProfessors = () => {
+    const{id, id1} = useParams();
+    const {addProfessors} = useContext(ProfessorsContext);
     const [name, setName] = useState ('');
+    const [department, setDepartment] = useState ('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await SchoolsList.post(`/${id}/schools`,{
-                school_name: name,
+            const response = await SchoolsList.post(`/${id}/schools/${id1}/professors`,{
+                professor_name: name,
+                department
             });
-            addSchools(response.data.data.schools);
-            
+            addProfessors(response.data.data.professors);
         } catch (err) {
             console.log(err.message);  
         }
@@ -30,7 +31,16 @@ const AddSchools = () => {
                             onChange = {e => setName(e.target.value)} 
                             tyoe='text'
                              className='form-control' 
-                             placeholder='school name'
+                             placeholder='Professor Name'
+                        />
+                </div>
+
+                <div className='col mx-sm-3 mb-2'>
+                        <input value={department} 
+                            onChange = {e => setDepartment(e.target.value)} 
+                            tyoe='text'
+                             className='form-control' 
+                             placeholder='Department'
                         />
                 </div>
                 <div className='col mb-2'>
@@ -41,4 +51,4 @@ const AddSchools = () => {
   
 )};
 
-export default AddSchools;
+export default AddProfessors;
