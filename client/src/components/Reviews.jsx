@@ -32,7 +32,7 @@ const Reviews = (props) => {
                                 <span className='card text-black bg-light'>{review.course_name}</span>
                                 <span ><StarRating rating={review.rating}/></span>
                             </span>
-                            <span>date: {review.date}</span>
+                            <span>Date: {review.date}</span>
                         </div>
                         <div className="card-header d-flex justify-content-between">
                             <span>For Credit: <span>{review.for_credit ? 
@@ -41,10 +41,10 @@ const Reviews = (props) => {
                             <span>Attendance: <span>{review.attendance ? 
                                 <span>Yes</span> : <span>No</span>}
                             </span></span>
-                            <span>Take: <span>{review.would_take_again ? 
+                            <span>Would Take Again? <span>{review.would_take_again ? 
                                 <span>Yes</span> : <span>No</span>}
                             </span></span>
-                            <span>textbook: <span>{review.textbook ? 
+                            <span>Textbook: <span>{review.textbook ? 
                                 <span>Yes</span> : <span>No</span>}
                             </span></span>
                         </div>
