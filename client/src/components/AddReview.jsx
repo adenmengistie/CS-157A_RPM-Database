@@ -12,7 +12,7 @@ const AddReview = () => {
     const [course_name, setCourseName] = useState ('');
     const [rating, setRating] = useState ('Rating');
     const [attendance, setAttendance] = useState ('Attendance');
-    const [textbook, settextbook] = useState ('Textbook');
+    const [textbook, setTextbook] = useState ('Textbook');
     const [forCredit, setForCredit] = useState ('For Credit');
     const [takeAgain, setTakeAgain] = useState ('Would Retake Again?');
     const [quality, setQuality] = useState ('Quality');
@@ -36,6 +36,15 @@ const AddReview = () => {
                 review_description
             });
             addReviews(response.data.data.reviews);
+            setCourseName('');
+            setRating('Rating');
+            setAttendance('Attendance');
+            setTextbook('Textbook');
+            setForCredit('For Credit');
+            setTakeAgain("Would Take Again?");
+            setQuality('Quality');
+            setDifficulty('Difficulty');
+            setReviewDescription('');
             
         } catch (err) {
             console.log(err.message);  
@@ -78,7 +87,7 @@ const AddReview = () => {
             
                         <select className="form-select form-select-sm border-dark"
                             value={textbook}
-                            onChange = {e => settextbook(e.target.value)}>
+                            onChange = {e => setTextbook(e.target.value)}>
                                 <option disabled>Textbook</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>

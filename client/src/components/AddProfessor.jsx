@@ -18,6 +18,9 @@ const AddProfessors = () => {
                 department
             });
             addProfessors(response.data.data.professors);
+            setName('');
+            setDepartment('');
+            
         } catch (err) {
             console.log(err.message);  
         }

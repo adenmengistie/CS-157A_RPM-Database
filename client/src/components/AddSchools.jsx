@@ -16,6 +16,7 @@ const AddSchools = () => {
                 school_name: name,
             });
             addSchools(response.data.data.schools);
+            setName('');
             
         } catch (err) {
             console.log(err.message);  
@@ -26,7 +27,8 @@ const AddSchools = () => {
         <div className='mb-4'>
             <form id='add-school-form' className='row'>
                 <div className='col mx-sm-3 mb-2'>
-                        <input value={name} 
+                        <input id="school"
+                            value={name} 
                             onChange = {e => setName(e.target.value)} 
                             tyoe='text'
                              className='form-control' 
